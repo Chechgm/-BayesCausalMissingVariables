@@ -1,0 +1,4 @@
+pystan
+cython
+matplotlib
+arviz
