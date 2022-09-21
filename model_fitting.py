@@ -14,7 +14,7 @@ def main():
     TODO: consider using argparse for this main
     TODO: Consider taking the model as argument to this function and making a directory for each model
     """
-    model = "ground_truth"
+    model = "parametric_ground_truth"
     model_dir = f"./STAN/{model}.stan"
     data_dir = "./data/simulated_data.pkl"
     results_dir = f"./results/{model}_posterior.pkl"
@@ -27,7 +27,16 @@ def main():
         "y": simulated_data["y"][:N],
         "x_1": simulated_data["x_1"][:N],
         "x_2": simulated_data["x_2"][:N],
-        "z": simulated_data["z"][:N]
+        "z": simulated_data["z"][:N],
+        "mu_b_0_u": simulated_data["beta_0_u"],
+        "mu_b_1_u": simulated_data["beta_1_u"],
+        "mu_b_2_u": simulated_data["beta_2_u"],
+        "mu_b_0_y": simulated_data["beta_0_y"],
+        "mu_b_1_y": simulated_data["beta_1_y"],
+        "mu_b_2_y": simulated_data["beta_2_y"],
+        "mu_b_u_y": simulated_data["beta_u_y"],
+        "mu_b_z_y": simulated_data["beta_z_y"],
+        "sd_priors": np.array([.5])
     }
     model_definition = load_model(model_dir)
     

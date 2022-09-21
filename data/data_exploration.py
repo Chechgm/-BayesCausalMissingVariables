@@ -9,8 +9,9 @@ from utils.utils import *
 def main():
     """
     """
+    model = "parametric_ground_truth"
     simulated_data_dir = "./data/simulated_data.pkl"
-    posterior_dir = "./results/ground_truth_posterior.pkl"
+    posterior_dir = f"./results/{model}_posterior.pkl"
 
     # Simulated data plots
     simulated_data = data_loading(simulated_data_dir)
@@ -28,7 +29,7 @@ def main():
     posterior_u = posterior_dict["u"]
     true_u = simulated_data["u"]
 
-    posterior_vs_true(posterior_u, true_u, f"./results/plots/u_posterior_vs_true.png")
+    posterior_vs_true(posterior_u, true_u, f"./results/plots/{model}_u_posterior_vs_true.png")
 
 
 if __name__ == "__main__":
